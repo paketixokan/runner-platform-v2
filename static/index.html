@@ -1,25 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Runner V2</title>
+    <title>Runner V2 - Port 8001</title>
     <style>
-        body { background: #1a1a2e; color: white; font-family: Arial; padding: 20px; }
-        h1 { color: #4CAF50; }
-        .agents { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .agent { background: #2a2a3e; padding: 15px; border-radius: 8px; }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-family: Arial;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 3em;
+        }
+        .port-info {
+            font-size: 1.5em;
+            color: #00ff88;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .panel {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        .agents {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .agent {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 15px;
+            border-radius: 20px;
+        }
+        #status {
+            font-size: 24px;
+            color: #00ff88;
+        }
     </style>
 </head>
 <body>
-    <h1>Runner Platform V2</h1>
-    <p>AI Operating System - 7 Agents</p>
-    <div class="agents">
-        <div class="agent">Abacus - Code</div>
-        <div class="agent">GitBot - Git</div>
-        <div class="agent">ScriptRunner - Execute</div>
-        <div class="agent">Memory - Store</div>
-        <div class="agent">Emergent - Manage</div>
-        <div class="agent">Cursor - UI</div>
-        <div class="agent">Orchestrator - Conduct</div>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 Runner Platform V2</h1>
+            <div class="port-info">Running on Port 8001</div>
+            <p>V1 on 8000 | V2 on 8001 - Both can run simultaneously</p>
+        </div>
+        
+        <div class="grid">
+            <div class="panel">
+                <h2>System Status</h2>
+                <div id="status">⚡ Connecting...</div>
+                <p>WebSocket: <span id="ws-status">Disconnected</span></p>
+            </div>
+            
+            <div class="panel">
+                <h2>7 AI Agents</h2>
+                <div class="agents">
+                    <div class="agent">🧮 Abacus</div>
+                    <div class="agent">🔧 GitBot</div>
+                    <div class="agent">⚡ ScriptRunner</div>
+                    <div class="agent">💾 Memory</div>
+                    <div class="agent">📊 Emergent</div>
+                    <div class="agent">🎨 Cursor</div>
+                    <div class="agent">🎯 Orchestrator</div>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    <script>
+        console.log("V2 Frontend loading...");
+        
+        // Connect to WebSocket on port 8001
+        let ws = new WebSocket("ws://localhost:8001/ws");
+        
+        ws.onopen = function() {
+            console.log("Connected to V2 WebSocket on port 8001");
+            document.getElementById("status").innerHTML = "✅ System Active";
+            document.getElementById("ws-status").innerHTML = "Connected to 8001";
+        };
+        
+        ws.onmessage = function(event) {
+            console.log("V2 Message:", event.data);
+        };
+        
+        ws.onerror = function(error) {
+            console.error("WebSocket error:", error);
+            document.getElementById("status").innerHTML = "❌ Connection Error";
+        };
+        
+        ws.onclose = function() {
+            document.getElementById("status").innerHTML = "⚠️ Disconnected";
+            document.getElementById("ws-status").innerHTML = "Disconnected";
+        };
+    </script>
 </body>
 </html>

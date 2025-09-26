@@ -1,0 +1,29 @@
+{
+  "project": "runner-platform-v2",
+  "vision": "AI Operating System - Beyond Chat Interfaces",
+  "core_principles": [
+    "Multi-agent orchestration with specialized AI experts",
+    "Real-time collaboration between humans and AI",
+    "Seamless integration with developer tools",
+    "Workspace-based project management",
+    "Marketplace for downloadable agents",
+    "One-click website and app generation"
+  ],
+  "differentiators": {
+    "vs_chatgpt": "Not just chat, but a complete development environment",
+    "vs_claude": "Multiple specialized agents working together",
+    "vs_cursor": "Full platform with integrations, not just code editor"
+  },
+  "technical_stack": {
+    "backend": "FastAPI, WebSockets, AsyncIO",
+    "frontend": "Modern dashboard with real-time updates",
+    "agents": "Modular plugin system",
+    "integrations": ["GitHub", "Notion", "Slack", "Discord"]
+  },
+  "target_users": [
+    "Developers building AI-powered applications",
+    "Teams needing AI collaboration",
+    "Startups wanting rapid prototyping",
+    "Enterprises seeking custom AI solutions"
+  ]
+}

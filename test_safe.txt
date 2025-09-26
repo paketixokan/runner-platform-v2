@@ -1,0 +1,1 @@
+Hello, this is a safe text file for testing.
